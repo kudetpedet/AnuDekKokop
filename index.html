@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>2003 </title>
+    <style>
+        body {
+            background: #ffebf3;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            font-family: 'Arial', sans-serif;
+        }
+        
+        .container {
+            text-align: center;
+        }
+
+        .pig {
+            font-size: 250px;
+            animation: float 3s ease-in-out infinite;
+        }
+
+        .message {
+            background: pink;
+            padding: 20px;
+            border-radius: 15px;
+            box-shadow: 0 0 20px rgba(255,192,203,0.5);
+            margin: 20px;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-20px); }
+        }
+
+        .hearts span {
+            color: #ff4081;
+            font-size: 30px;
+            animation: heartBeat 1.5s infinite;
+            display: inline-block;
+            margin: 0 5px;
+        }
+
+        @keyframes heartBeat {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.5); }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="pig"></div>
+        <div class="message">
+            <h2>Morning Dek</h2>
+            <p>Bagaimana kabarmu disana?<br>
+            Semoga sehat - sehat selalu disana ya<br>
+            Tetap semangat ya dek ya<br>
+            Anu Dek, Kokop </p>
+            <img src="kokop.png" width="100px" height="100px">
+            
+            <div class="hearts">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // float
+        function createHeart() {
+            const heart = document.createElement('div');
+            heart.innerHTML = '';
+            heart.style.position = 'fixed';
+            heart.style.left = Math.random() * 100 + 'vw';
+            heart.style.animation = 'float ' + (Math.random() * 5 + 5) + 's linear';
+            heart.style.fontSize = (Math.random() * 50 + 30) + 'px';
+            document.body.appendChild(heart);
+            
+            setTimeout(() => heart.remove(), 6000);
+        }
+
+        setInterval(createHeart, 300);
+    </script>
+</body>
+</html>
